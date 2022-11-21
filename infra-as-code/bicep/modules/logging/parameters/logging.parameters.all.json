@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parLogAnalyticsWorkspaceName": {
-      "value": "alz-log-analytics"
+      "value": "log-shmgmt-centralized-we"
     },
     "parLogAnalyticsWorkspaceLocation": {
-      "value": "eastus"
+      "value": "westeurope"
     },
     "parLogAnalyticsWorkspaceSkuName": {
       "value": "PerGB2018"
     },
     "parLogAnalyticsWorkspaceLogRetentionInDays": {
-      "value": 365
+      "value": 180
     },
     "parLogAnalyticsWorkspaceSolutions": {
       "value": [
@@ -31,10 +31,10 @@
       ]
     },
     "parAutomationAccountName": {
-      "value": "alz-automation-account"
+      "value": "aa-shmgmt-centralized-we"
     },
     "parAutomationAccountLocation": {
-      "value": "eastus2"
+      "value": "westeurope"
     },
     "parTags": {
       "value": {
