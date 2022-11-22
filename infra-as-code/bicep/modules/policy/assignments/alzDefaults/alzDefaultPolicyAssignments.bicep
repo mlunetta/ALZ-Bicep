@@ -18,6 +18,9 @@ param parAutomationAccountName string = 'alz-automation-account'
 @description('An e-mail address that you want Microsoft Defender for Cloud alerts to be sent to.')
 param parMsDefenderForCloudEmailSecurityContact string = 'security_contact@replace_me.com'
 
+@description('Specify if Microsoft Defender For Cloud policy deployment is needed.')
+param parMDFCPolicyEnabled bool = false
+
 @description('ID of the DdosProtectionPlan which will be applied to the Virtual Networks. If left empty, the policy Enable-DDoS-VNET will not be assigned at connectivity or landing zone Management Groups to avoid VNET deployment issues. Default: Empty String')
 param parDdosProtectionPlanId string = ''
 
@@ -236,7 +239,7 @@ module modCustomerUsageAttribution '../../../../CRML/customerUsageAttribution/cu
 
 // Modules - Policy Assignments - Intermediate Root Management Group
 // Module - Policy Assignment - Deploy-MDFC-Config
-module modPolicyAssignmentIntRootDeployMdfcConfig '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
+module modPolicyAssignmentIntRootDeployMdfcConfig '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = if (parMDFCPolicyEnabled) {
   scope: managementGroup(varManagementGroupIds.intRoot)
   name: varModuleDeploymentNames.modPolicyAssignmentIntRootDeployMdfcConfig
   params: {

@@ -274,7 +274,7 @@ module modBastionPublicIp '../publicIp/publicIp.bicep' = if (parAzBastionEnabled
   name: 'deploy-Bastion-Public-IP'
   params: {
     parLocation: parLocation
-    parPublicIpName: '${parAzBastionName}-PublicIp'
+    parPublicIpName: 'pip-${parAzBastionName}'
     parPublicIpSku: {
       name: parPublicIpSku
     }
@@ -456,7 +456,7 @@ module modGatewayPublicIp '../publicIp/publicIp.bicep' = [for (gateway, i) in va
   params: {
     parLocation: parLocation
     parAvailabilityZones: gateway.gatewayType == 'ExpressRoute' ? parAzErGatewayAvailabilityZones : gateway.gatewayType == 'Vpn' ? parAzVpnGatewayAvailabilityZones : []
-    parPublicIpName: '${gateway.name}-PublicIp'
+    parPublicIpName: 'pip-${gateway.name}'
     parPublicIpProperties: {
       publicIpAddressVersion: 'IPv4'
       publicIpAllocationMethod: 'Static'
@@ -514,7 +514,7 @@ module modAzureFirewallPublicIp '../publicIp/publicIp.bicep' = if (parAzFirewall
   params: {
     parLocation: parLocation
     parAvailabilityZones: parAzFirewallAvailabilityZones
-    parPublicIpName: '${parAzFirewallName}-PublicIp'
+    parPublicIpName: 'pip-${parAzFirewallName}'
     parPublicIpProperties: {
       publicIpAddressVersion: 'IPv4'
       publicIpAllocationMethod: 'Static'

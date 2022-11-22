@@ -3,30 +3,26 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parLocation": {
-      "value": "eastus"
+      "value": "westeurope"
     },
     "parCompanyPrefix": {
-      "value": "alz"
+      "value": "bicepbeta"
     },
     "parHubNetworkName": {
-      "value": "alz-hub-eastus"
+      "value": "vnet-hub-centralized-we"
     },
     "parHubNetworkAddressPrefix": {
-      "value": "10.20.0.0/16"
+      "value": "10.100.0.0/24"
     },
     "parSubnets": {
       "value": [
         {
-          "name": "AzureBastionSubnet",
-          "ipAddressRange": "10.20.0.0/24"
-        },
-        {
           "name": "GatewaySubnet",
-          "ipAddressRange": "10.20.254.0/24"
+          "ipAddressRange": "10.100.0.0/27"
         },
         {
           "name": "AzureFirewallSubnet",
-          "ipAddressRange": "10.20.255.0/24"
+          "ipAddressRange": "10.100.0.64/26"
         }
       ]
     },
@@ -37,31 +33,31 @@
       "value": "Standard"
     },
     "parAzBastionEnabled": {
-      "value": true
+      "value": false
     },
     "parAzBastionName": {
-      "value": "alz-bastion"
+      "value": "bas-hub-centralized-we"
     },
     "parAzBastionSku": {
       "value": "Standard"
     },
     "parAzBastionNsgName": {
-      "value": "nsg-AzureBastionSubnet"
+      "value": "nsg-hubbas-centralized-we"
     },
     "parDdosEnabled": {
-      "value": true
+      "value": false
     },
     "parDdosPlanName": {
-      "value": "alz-ddos-plan"
+      "value": "ddosp-hub-centralized-we"
     },
     "parAzFirewallEnabled": {
       "value": true
     },
     "parAzFirewallName": {
-      "value": "alz-azfw-eastus"
+      "value": "afw-hub-centralized-we"
     },
     "parAzFirewallPoliciesName": {
-      "value": "alz-azfwpolicy-eastus"
+      "value": "afwp-hub-centralized-we"
     },
     "parAzFirewallTier": {
       "value": "Standard"
@@ -79,7 +75,7 @@
       "value": true
     },
     "parHubRouteTableName": {
-      "value": "alz-hub-routetable"
+      "value": "rt-hub-centralized-we"
     },
     "parDisableBgpRoutePropagation": {
       "value": false
@@ -105,14 +101,14 @@
         "privatelink.cassandra.cosmos.azure.com",
         "privatelink.gremlin.cosmos.azure.com",
         "privatelink.table.cosmos.azure.com",
-        "privatelink.xxxxxx.batch.azure.com", // Replace xxxxxx with target region (i.e. eastus)
+        "privatelink.westeurope.batch.azure.com", // Replace westeurope with target region (i.e. eastus)
         "privatelink.postgres.database.azure.com",
         "privatelink.mysql.database.azure.com",
         "privatelink.mariadb.database.azure.com",
         "privatelink.vaultcore.azure.net",
         "privatelink.managedhsm.azure.net",
-        "privatelink.xxxxxx.azmk8s.io", // Replace xxxxxx with target region (i.e. eastus)
-        "privatelink.xxxxxx.backup.windowsazure.com", // Replace xxxxxx with target region geo code (i.e. for eastus, the geo code is eus)
+        "privatelink.westeurope.azmk8s.io", // Replace westeurope with target region (i.e. eastus)
+        "privatelink.westeurope.backup.windowsazure.com", // Replace westeurope with target region geo code (i.e. for eastus, the geo code is eus)
         "privatelink.siterecovery.windowsazure.com",
         "privatelink.servicebus.windows.net",
         "privatelink.azure-devices.net",
@@ -145,42 +141,42 @@
     },
     "parVpnGatewayConfig": {
       "value": {
-        "name": "alz-Vpn-Gateway",
+        "name": "vpng-hub-centralized-we",
         "gatewayType": "Vpn",
         "sku": "VpnGw1",
         "vpnType": "RouteBased",
         "generation": "Generation1",
-        "enableBgp": false,
+        "enableBgp": true,
         "activeActive": false,
         "enableBgpRouteTranslationForNat": false,
         "enableDnsForwarding": false,
-        "asn": "65515",
+        "asn": "65510",
         "bgpPeeringAddress": "",
         "bgpsettings": {
-          "asn": "65515",
+          "asn": "65510",
           "bgpPeeringAddress": "",
-          "peerWeight": "5"
+          "peerWeight": ""
         }
       }
     },
     "parExpressRouteGatewayConfig": {
       "value": {
-        "name": "alz-ExpressRoute-Gateway",
-        "gatewayType": "ExpressRoute",
-        "sku": "Standard",
-        "vpnType": "RouteBased",
-        "generation": "None",
-        "enableBgp": false,
-        "activeActive": false,
-        "enableBgpRouteTranslationForNat": false,
-        "enableDnsForwarding": false,
-        "asn": "65515",
-        "bgpPeeringAddress": "",
-        "bgpsettings": {
-          "asn": "65515",
-          "bgpPeeringAddress": "",
-          "peerWeight": "5"
-        }
+      //   "name": "alz-ExpressRoute-Gateway",
+      //   "gatewayType": "ExpressRoute",
+      //   "sku": "Standard",
+      //   "vpnType": "RouteBased",
+      //   "generation": "None",
+      //   "enableBgp": false,
+      //   "activeActive": false,
+      //   "enableBgpRouteTranslationForNat": false,
+      //   "enableDnsForwarding": false,
+      //   "asn": "65515",
+      //   "bgpPeeringAddress": "",
+      //   "bgpsettings": {
+      //     "asn": "65515",
+      //     "bgpPeeringAddress": "",
+      //     "peerWeight": "5"
+        // }
       }
     },
     "parTags": {

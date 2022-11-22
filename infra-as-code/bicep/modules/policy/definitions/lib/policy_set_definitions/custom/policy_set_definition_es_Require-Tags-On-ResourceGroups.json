@@ -1,0 +1,53 @@
+{
+  "name": "Require-Tags-On-Resource-Groups",
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2021-06-01",
+  "scope": null,
+  "properties": {
+    "displayName": "Require-Tags-On-Resource-Groups",
+    "description": "This custom initiative deny resource groups creation if proper tags are not configured.",
+    "policyType": "Custom",
+    "metadata": {
+      "category": "Tags"
+    },
+    "parameters": {
+      "environment": {
+        "type": "string",
+        "metadata": {
+          "displayName": "environment"
+        },
+        "defaultValue": "environment"
+      },
+      "application_name": {
+        "type": "string",
+        "metadata": {
+          "displayName": "application_name"
+        },
+        "defaultValue": "application_name"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Require environment tag on resource groups",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('environment')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "Require application_name tag on resource groups",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('application_name')]"
+          }
+        },
+        "groupNames": []
+      }
+    ],
+    "policyDefinitionGroups": []
+  }
+}

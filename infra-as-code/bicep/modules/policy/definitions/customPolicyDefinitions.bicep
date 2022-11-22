@@ -434,6 +434,13 @@ var varCustomPolicyDefinitionsArray = [
     name: 'Deploy-Windows-DomainJoin'
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-Windows-DomainJoin.json')
   }
+  ///////////////////////////////////////////////////////////////
+  //////////          CUSTOM POLICIES BY MARC           /////////
+  ///////////////////////////////////////////////////////////////
+  {
+    name: 'Require-Tag-And-Value-From-Set'
+    libDefinition: loadJsonContent('lib/policy_definitions/custom/policy_definition_es_Deny-ResourceGroups-without-tags-from-set.json')
+  }
 ]
 
 // This variable contains a number of objects that load in the custom Azure Policy Set/Initiative Defintions that are provided as part of the ESLZ/ALZ reference implementation - this is automatically created in the file 'infra-as-code\bicep\modules\policy\lib\policy_set_definitions\_policySetDefinitionsBicepInput.txt' via a GitHub action, that runs on a daily schedule, and is then manually copied into this variable.
@@ -1368,6 +1375,27 @@ var varCustomPolicySetDefinitionsArray = [
       }
     ]
   }
+  ///////////////////////////////////////////////////////////////
+  //////////        CUSTOM INITIATIVES BY MARC          /////////
+  ///////////////////////////////////////////////////////////////
+  {
+    name: 'Require-Tags-On-Resource-Groups'
+    libSetDefinition: loadJsonContent('lib/policy_set_definitions/custom/policy_set_definition_es_Require-Tags-On-ResourceGroups.json')
+    libSetChildDefinitions: [
+      {
+        definitionReferenceId: 'Require environment tag on resource groups'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025'
+        definitionParameters: varPolicySetDefinitionEsRequireTagsOnResourceGropsParameters.environment.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'Require application_name tag on resource groups'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025'
+        definitionParameters: varPolicySetDefinitionEsRequireTagsOnResourceGropsParameters.application_name.parameters
+        definitionGroups: []
+      }
+    ]
+  }
 ]
 
 // Policy Set/Initiative Definition Parameter Variables
@@ -1385,6 +1413,11 @@ var varPolicySetDefinitionEsDeploySqlSecurityParameters = loadJsonContent('lib/p
 var varPolicySetDefinitionEsEnforceEncryptionCMKParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Enforce-Encryption-CMK.parameters.json')
 
 var varPolicySetDefinitionEsEnforceEncryptTransitParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Enforce-EncryptTransit.parameters.json')
+
+///////////////////////////////////////////////////////////////
+//////////         CUSTOM VARIABLES BY MARC           /////////
+///////////////////////////////////////////////////////////////
+var varPolicySetDefinitionEsRequireTagsOnResourceGropsParameters = loadJsonContent('lib/policy_set_definitions/custom/policy_set_definition_es_Require-Tags-On-ResourceGroups.parameters.json')
 
 // Customer Usage Attribution Id
 var varCuaid = '2b136786-9881-412e-84ba-f4c2822e1ac9'

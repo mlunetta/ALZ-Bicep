@@ -1,0 +1,50 @@
+{
+  "name": "Require Tag Name and Value From Set on Resource Groups",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "apiVersion": "2021-06-01",
+  "scope": null,
+  "properties": {
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "displayName": "Require Tag Name and Value From Set on Resource Groups",
+    "description": "This policy denies creation of Resource Groups without specified tags from allowed set of values.",
+    "metadata": {
+      "category": "Tags"
+    },
+    "parameters": {
+      "tagName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag Name",
+          "description": "Name of the tag, such as 'Environment'"
+        }
+      },
+      "tagValue": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag Value",
+          "description": "Value of the tag, such as 'Prod'"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "not": {
+              "field": "[concat('tags[', parameters('tagName'), ']')]",
+              "in": "[parameters('tagValue')]"
+            }
+          },
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

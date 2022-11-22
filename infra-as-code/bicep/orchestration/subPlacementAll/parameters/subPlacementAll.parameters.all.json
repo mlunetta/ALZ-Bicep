@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "parTopLevelManagementGroupPrefix": {
-      "value": "alz"
+      "value": "bicepbeta"
     },
     "parIntRootMgSubs": {
       "value": []
@@ -12,13 +12,19 @@
       "value": []
     },
     "parPlatformManagementMgSubs": {
-      "value": []
+      "value": [
+        "ded0b858-c4c1-4116-b304-fe3dcb8a6f5f"
+      ]
     },
     "parPlatformConnectivityMgSubs": {
-      "value": []
+      "value": [
+        "23447211-05cf-4a0e-bdb4-e37ebf4e3b88"
+      ]
     },
     "parPlatformIdentityMgSubs": {
-      "value": []
+      "value": [
+        "6ffa32ee-2959-4489-9397-1eb09f8ce2d7"
+      ]
     },
     "parLandingZonesMgSubs": {
       "value": []
@@ -27,7 +33,9 @@
       "value": []
     },
     "parLandingZonesOnlineMgSubs": {
-      "value": []
+      "value": [
+        "f7684001-51f5-45d1-a591-c0c1304ef52a"
+      ]
     },
     "parLandingZonesConfidentialCorpMgSubs": {
       "value": []

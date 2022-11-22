@@ -1,0 +1,18 @@
+{
+  "name": "Require-Tags-On-Rgs",
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2019-09-01",
+  "properties": {
+    "description": "This policy denies the creation of a resource group without required tags.",
+    "displayName": "Resource groups must have defined tags",
+    "notScopes": [],
+    "parameters": {},
+    "policyDefinitionId": "${modManagementGroups.outputs.outTopLevelManagementGroupId}/providers/Microsoft.Authorization/policyDefinitions/Require-Tags-On-Resource-Groups",
+    "scope": null,
+    "enforcementMode": "Default"
+  },
+  "location": null,
+  "identity": {
+    "type": "None"
+  }
+}

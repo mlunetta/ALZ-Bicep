@@ -3,25 +3,28 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "parTopLevelManagementGroupPrefix": {
-            "value": "alz"
+            "value": "bicepbeta"
         },
         "parLogAnalyticsWorkSpaceAndAutomationAccountLocation": {
-            "value": "eastus"
+            "value": "westeurope"
         },
         "parLogAnalyticsWorkspaceResourceId": {
-            "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/alz-logging/providers/Microsoft.OperationalInsights/workspaces/alz-log-analytics"
+            "value": "/subscriptions/ded0b858-c4c1-4116-b304-fe3dcb8a6f5f/resourceGroups/rg-shmgmt-centralized-001/providers/Microsoft.OperationalInsights/workspaces/log-shmgmt-centralized-we"
         },
         "parLogAnalyticsWorkspaceLogRetentionInDays": {
-            "value": "365"
+            "value": "180"
         },
         "parAutomationAccountName": {
-            "value": "alz-automation-account"
+            "value": "aa-shmgmt-centralized-we"
         },
         "parMsDefenderForCloudEmailSecurityContact": {
             "value": "security_contact@replace_me.com"
         },
         "parDdosProtectionPlanId": {
-            "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/Hub_Networking_POC/providers/Microsoft.Network/ddosProtectionPlans/alz-ddos-plan"
+            "value": ""
+        },
+        "parMDFCPolicyEnabled":{
+            "value": false
         },
         "parTelemetryOptOut": {
             "value": false

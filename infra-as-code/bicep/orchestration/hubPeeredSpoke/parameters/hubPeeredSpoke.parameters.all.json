@@ -6,37 +6,40 @@
         "value": "westeurope"
       },
       "parTopLevelManagementGroupPrefix": {
-        "value": "alz"
+        "value": "bicepbeta"
+      },
+      "parEnvironment": {
+        "value": "test"
       },
       "parPeeredVnetSubscriptionId": {
-        "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        "value": "f7684001-51f5-45d1-a591-c0c1304ef52a"
       },
       "parPeeredVnetSubscriptionMgPlacement": {
-        "value": "alz-platform-connectivity"
+        "value": "bicepbeta-landingzones-online"
       },
       "parDdosProtectionPlanId": {
         "value": ""
       },
       "parSpokeNetworkName": {
-        "value": "vnet-spoke"
+        "value": "vnet-spoke-test-we"
       },
       "parSpokeNetworkAddressPrefix": {
-        "value": "10.202.0.0/24"
+        "value": "10.210.0.0/24"
       },
       "parDnsServerIps": {
         "value": []
       },
       "parNextHopIpAddress": {
-        "value": "10.20.255.4"
+        "value": "10.100.0.68"
       },
       "parDisableBgpRoutePropagation": {
-        "value": false
+        "value": true
       },      
       "parSpoketoHubRouteTableName": {
-        "value": "rtb-spoke-to-hub"
+        "value": "rt-spoke-to-hub"
       },
       "parHubVirtualNetworkId": {
-        "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/alz-westeurope-hub-networking/providers/Microsoft.Network/virtualNetworks/alz-hub-westeurope"
+        "value": "/subscriptions/23447211-05cf-4a0e-bdb4-e37ebf4e3b88/resourceGroups/rg-hubnetworking-centralized-001/providers/Microsoft.Network/virtualNetworks/vnet-hub-centralized-we"
       },
       "parAllowSpokeForwardedTraffic": {
         "value": false

@@ -5,6 +5,9 @@ targetScope = 'managementGroup'
 @description('The region to deploy all resources into. Default: deployment().location')
 param parLocation string = deployment().location
 
+@description('The environment (test/dev/prod)')
+param parEnvironment string = 'test'
+
 @description('Prefix for the management group hierarchy. Default: alz')
 @minLength(2)
 @maxLength(10)
@@ -25,7 +28,7 @@ param parPeeredVnetSubscriptionMgPlacement string = ''
 
 // Resource Group Module Parameters
 @description('Name of Resource Group to be created to contain spoke networking resources like the virtual network. Default: {parTopLevelManagementGroupPrefix}-{parLocation}-spoke-networking')
-param parResourceGroupNameForSpokeNetworking string = '${parTopLevelManagementGroupPrefix}-${parLocation}-spoke-networking'
+param parResourceGroupNameForSpokeNetworking string = 'rg-${split(parSpokeNetworkName,'-')[1]}-${parEnvironment}-${split(parSpokeNetworkName,'-')[3]}-networking'
 
 // Spoke Networking Module Parameters
 @description('Existing DDoS Protection plan to utilize. Default: Empty string')

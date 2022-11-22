@@ -1,0 +1,16 @@
+{
+  "environment": {
+    "parameters": {
+      "tagName": {
+        "value": "[[parameters('environment')]"
+      }
+    }
+  },
+  "application_name": {
+    "parameters": {
+      "tagName": {
+        "value": "[[parameters('application_name')]"
+      }
+    }
+  }
+}
