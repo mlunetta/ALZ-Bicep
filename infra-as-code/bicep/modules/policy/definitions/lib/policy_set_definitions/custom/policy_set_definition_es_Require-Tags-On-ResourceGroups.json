@@ -11,19 +11,25 @@
       "category": "Tags"
     },
     "parameters": {
-      "environment": {
+      "environmentTagName": {
         "type": "string",
         "metadata": {
-          "displayName": "environment"
+          "displayName": "environmentTagName"
         },
         "defaultValue": "environment"
       },
-      "application_name": {
+      "environmentAllowedValues": {
+        "type": "array",
+        "metadata": {
+          "displayName": "environmentAllowedValues"
+        }
+      },
+      "applicationnameTagName": {
         "type": "string",
         "metadata": {
-          "displayName": "application_name"
+          "displayName": "applicationnameTagName"
         },
-        "defaultValue": "application_name"
+        "defaultValue": "applicationname"
       }
     },
     "policyDefinitions": [
@@ -32,17 +38,20 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
         "parameters": {
           "tagName": {
-            "value": "[parameters('environment')]"
+            "value": "[parameters('environmentTagName')]"
+          },
+          "tagValue": {
+            "value": "[parameters('environmentAllowedValues')]"
           }
         },
         "groupNames": []
       },
       {
-        "policyDefinitionReferenceId": "Require application_name tag on resource groups",
+        "policyDefinitionReferenceId": "Require applicationname tag on resource groups",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
         "parameters": {
           "tagName": {
-            "value": "[parameters('application_name')]"
+            "value": "[parameters('applicationnameTagName')]"
           }
         },
         "groupNames": []

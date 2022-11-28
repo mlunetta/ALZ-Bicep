@@ -6,7 +6,17 @@
     "description": "This policy denies the creation of a resource group without required tags.",
     "displayName": "Resource groups must have defined tags",
     "notScopes": [],
-    "parameters": {},
+    "parameters": {
+      "environmentTagName": {
+        "value": "environment"
+      },
+      "environmentAllowedValues": {
+        "value": ["Prod","Test","Dev"]
+      },
+      "applicationnameTagName": {
+        "value": "applicationname"
+      }
+    },
     "policyDefinitionId": "${modManagementGroups.outputs.outTopLevelManagementGroupId}/providers/Microsoft.Authorization/policyDefinitions/Require-Tags-On-Resource-Groups",
     "scope": null,
     "enforcementMode": "Default"

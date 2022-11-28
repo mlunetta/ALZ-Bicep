@@ -2,14 +2,17 @@
   "environment": {
     "parameters": {
       "tagName": {
-        "value": "[[parameters('environment')]"
+        "value": "[[parameters('environmentTagName')]"
+      },
+      "tagValue": {
+        "value": "[[parameters('environmentAllowedValues')]"
       }
     }
   },
   "application_name": {
     "parameters": {
       "tagName": {
-        "value": "[[parameters('application_name')]"
+        "value": "[[parameters('applicationnameTagName')]"
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "name": "Require Tag Name and Value From Set on Resource Groups",
+  "name": "Require-Tag-And-Value-From-Set",
   "type": "Microsoft.Authorization/policyDefinitions",
   "apiVersion": "2021-06-01",
   "scope": null,
