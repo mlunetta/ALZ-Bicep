@@ -5,7 +5,7 @@
   "scope": null,
   "properties": {
     "policyType": "Custom",
-    "mode": "Indexed",
+    "mode": "All",
     "displayName": "Require Tag Name and Value From Set on Resource Groups",
     "description": "This policy denies creation of Resource Groups without specified tags from allowed set of values.",
     "metadata": {
@@ -31,10 +31,8 @@
       "if": {
         "allOf": [
           {
-            "not": {
-              "field": "[concat('tags[', parameters('tagName'), ']')]",
-              "in": "[parameters('tagValue')]"
-            }
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "notIn": "[parameters('tagValue')]"
           },
           {
             "field": "type",
