@@ -19,6 +19,7 @@ var varDeploymentNameWrappers = {
 
 var varModuleDeploymentNames = {
   modPolicyAssignmentLzsRequireTagsOnResourceGroups: take('${varDeploymentNameWrappers.basePrefix}-polAssi-requireTags-lz-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
+  modPolicyAssignmentLzsDenyKeyvaultSku: take('${varDeploymentNameWrappers.basePrefix}-polAssi-denyKvSku-lz-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
 }
 
 // Policy Assignments Modules Variables
@@ -26,6 +27,11 @@ var varModuleDeploymentNames = {
 var varPolicyAssignmentRequireTagsOnResourceGroups = {
   definitionId: '${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policySetDefinitions/Require-Tags-On-Resource-Groups'
   libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_require_tags_on_resourcegroups.tmpl.json')
+}
+
+var varPolicyAssignmentDenyKeyvaultSku = {
+  definitionId: '${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/key-vault-sku-setting-deny'
+  libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_deny_keyvault_sku_settings.tmpl.json')
 }
 
 // Managment Groups Varaibles - Used For Policy Assignments
@@ -68,6 +74,23 @@ module modPolicyAssignmentLzsRequireTagsOnResourceGroups '../../../policy/assign
     parPolicyAssignmentParameters: varPolicyAssignmentRequireTagsOnResourceGroups.libDefinition.properties.parameters
     parPolicyAssignmentIdentityType: varPolicyAssignmentRequireTagsOnResourceGroups.libDefinition.identity.type
     parPolicyAssignmentEnforcementMode: varPolicyAssignmentRequireTagsOnResourceGroups.libDefinition.properties.enforcementMode
+    parTelemetryOptOut: parTelemetryOptOut
+  }
+}
+
+// Modules - Policy Assignments - Online Landing Zones Management Group
+// Module - Policy Assignment - key-vault-sku-setting-deny
+module modPolicyAssignmentLzsDenyKeyvaultSku '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
+  scope: managementGroup(varManagementGroupIds.landingZonesOnline)
+  name: varModuleDeploymentNames.modPolicyAssignmentLzsDenyKeyvaultSku
+  params: {
+    parPolicyAssignmentDefinitionId: varPolicyAssignmentDenyKeyvaultSku.definitionId
+    parPolicyAssignmentName: varPolicyAssignmentDenyKeyvaultSku.libDefinition.name
+    parPolicyAssignmentDisplayName: varPolicyAssignmentDenyKeyvaultSku.libDefinition.properties.displayName
+    parPolicyAssignmentDescription: varPolicyAssignmentDenyKeyvaultSku.libDefinition.properties.description
+    parPolicyAssignmentParameters: varPolicyAssignmentDenyKeyvaultSku.libDefinition.properties.parameters
+    parPolicyAssignmentIdentityType: varPolicyAssignmentDenyKeyvaultSku.libDefinition.identity.type
+    parPolicyAssignmentEnforcementMode: varPolicyAssignmentDenyKeyvaultSku.libDefinition.properties.enforcementMode
     parTelemetryOptOut: parTelemetryOptOut
   }
 }
