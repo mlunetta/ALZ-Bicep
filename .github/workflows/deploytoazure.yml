@@ -23,3 +23,7 @@ jobs:
         #tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         #client-secret: ${{ secrets.AZURE_CLIENT_SECRET}}
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Run Policy Definitions deployments
+      run: ./deployment_scripts/2-1_policydefinition_custom_deploy.sh
+    - name: Run Policy Assigments deployments
+      run: ./deployment_scripts/8-1_policyassignment_custom_deploy.sh
