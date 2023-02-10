@@ -20,6 +20,7 @@ var varDeploymentNameWrappers = {
 var varModuleDeploymentNames = {
   modPolicyAssignmentLzsRequireTagsOnResourceGroups: take('${varDeploymentNameWrappers.basePrefix}-polAssi-requireTags-lz-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
   modPolicyAssignmentLzsDenyKeyvaultSku: take('${varDeploymentNameWrappers.basePrefix}-polAssi-denyKvSku-lz-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
+  modPolicyAssignmentLzsDenyStTls: take('${varDeploymentNameWrappers.basePrefix}-polAssi-denyStTls-lz-${varDeploymentNameWrappers.baseSuffixTenantAndManagementGroup}', 64)
 }
 
 // Policy Assignments Modules Variables
@@ -27,11 +28,6 @@ var varModuleDeploymentNames = {
 var varPolicyAssignmentRequireTagsOnResourceGroups = {
   definitionId: '${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policySetDefinitions/Require-Tags-On-Resource-Groups'
   libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_require_tags_on_resourcegroups.tmpl.json')
-}
-
-var varPolicyAssignmentDenyKeyvaultSku = {
-  definitionId: '${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/key-vault-sku-setting-deny'
-  libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_deny_keyvault_sku_settings.tmpl.json')
 }
 
 // Managment Groups Varaibles - Used For Policy Assignments
