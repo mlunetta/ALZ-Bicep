@@ -19,16 +19,6 @@ var varCustomPolicyAssignemntsArray = [
     name: 'Require-Tag-And-Value-From-Set'
     libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_require_tags_on_resourcegroups.tmpl.json')
   }
-  {
-    scope: varManagementGroupIds.landingZones
-    name: 'Deny-Kv-Sku-Setting'
-    libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_Deny-key-vault-sku-setting.tmpl.json')
-  }
-  {
-    scope: varManagementGroupIds.landingZonesOnline
-    name: 'Deny-StorageAccount-Tls-Setting'
-    libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_Deny-Storage-Account-TLS-setting.tmpl.json')
-  }
 ]
 
 // Managment Groups Varaibles - Used For Policy Assignments
