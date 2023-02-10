@@ -16,11 +16,11 @@ var varCustomPolicyDefinitionsArray = [
   }
   {
     name: 'Deny-Keyvault-Sku-Setting'
-    libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_assignment_es_Deny-key-vault-sku-setting.tmpl.json')
+    libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_definition_es_Deny-key-vault-sku-setting.json')
   }
   {
     name: 'Deny-StorAcc-Tls-Setting'
-    libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_assignment_es_Deny-Storage-Account-TLS-setting.tmpl.json')
+    libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_definition_es_Deny-Storage-Account-TLS-setting.json')
   }
 ]
 
