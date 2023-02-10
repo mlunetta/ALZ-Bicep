@@ -3,7 +3,7 @@
    "name": "key-vault-sku-setting-deny",
    "properties": {
       "policyType": "Custom",
-      "displayName": "Key Vault - SKU Setting DENY",
+      "displayName": "Expert Days Custom - Key Vault - SKU Setting DENY",
       "description": "This Azure Policy denies the creation of an Azure Key Vault when the 'SKU' setting is not included in the 'allowedSKUSetting' parameter.",
       "mode": "All",
       "metadata": {
