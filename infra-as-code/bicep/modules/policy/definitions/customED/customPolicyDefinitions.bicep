@@ -14,6 +14,14 @@ var varCustomPolicyDefinitionsArray = [
     name: 'Require-Tag-And-Value-From-Set'
     libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_definition_es_Deny-ResourceGroups-without-tags-from-set.json')
   }
+  {
+    name: 'Deny-Key-Vault-Sku-Setting'
+    libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_definition_es_Deny-key-vault-sku-setting.json')
+  }
+  {
+    name: 'Deny-Storage-Account-Tls-Setting'
+    libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_definition_es_Deny-Storage-Account-TLS-setting.json')
+  }
 ]
 
 // This variable contains a number of objects that load in the custom Azure Policy Set/Initiative Defintions that are provided as part of the ESLZ/ALZ reference implementation - this is automatically created in the file 'infra-as-code\bicep\modules\policy\lib\policy_set_definitions\_policySetDefinitionsBicepInput.txt' via a GitHub action, that runs on a daily schedule, and is then manually copied into this variable.
