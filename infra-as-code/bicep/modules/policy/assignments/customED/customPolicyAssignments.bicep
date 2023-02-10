@@ -137,7 +137,7 @@ module modPolicyAssignment '../../../policy/assignments/policyAssignmentManageme
   scope: managementGroup(policyAssigment.scope)
   name: policyAssigment.name
   params: {
-    parPolicyAssignmentDefinitionId: policyAssigment.libDefinition.properties.policyDefinitionId
+    parPolicyAssignmentDefinitionId: '${varTopLevelManagementGroupResourceId}${policyAssigment.libDefinition.properties.policyDefinitionId}'
     parPolicyAssignmentName: policyAssigment.libDefinition.name
     parPolicyAssignmentDisplayName: policyAssigment.libDefinition.properties.displayName
     parPolicyAssignmentDescription: policyAssigment.libDefinition.properties.description
