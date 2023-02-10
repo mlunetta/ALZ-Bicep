@@ -80,7 +80,7 @@ module modPolicyAssignmentLzsRequireTagsOnResourceGroups '../../../policy/assign
 
 // Modules - Policy Assignments - Online Landing Zones Management Group
 // Module - Policy Assignment - key-vault-sku-setting-deny
-module modPolicyAssignmentLzsDenyKeyvaultSku '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
+/* module modPolicyAssignmentLzsDenyKeyvaultSku '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
   scope: managementGroup(varManagementGroupIds.landingZonesOnline)
   name: varModuleDeploymentNames.modPolicyAssignmentLzsDenyKeyvaultSku
   params: {
@@ -94,3 +94,4 @@ module modPolicyAssignmentLzsDenyKeyvaultSku '../../../policy/assignments/policy
     parTelemetryOptOut: parTelemetryOptOut
   }
 }
+ */

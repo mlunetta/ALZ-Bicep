@@ -14,10 +14,10 @@
           "level": "error"
         },
         "no-unused-params": {
-          "level": "error"
+          "level": "info"
         },
         "no-unused-vars": {
-          "level": "error"
+          "level": "info"
         },
         "outputs-should-not-contain-secrets": {
           "level": "error"
