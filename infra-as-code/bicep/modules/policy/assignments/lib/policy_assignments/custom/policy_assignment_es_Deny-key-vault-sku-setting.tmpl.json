@@ -11,7 +11,7 @@
         "value": "Premium"
       }
     },
-    "policyDefinitionId": "${modManagementGroups.outputs.outTopLevelManagementGroupId}/providers/Microsoft.Authorization/policyDefinitions/key-vault-sku-setting-deny",
+    "policyDefinitionId": "${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/key-vault-sku-setting-deny",
     "scope": null,
     "enforcementMode": "Default"
   },

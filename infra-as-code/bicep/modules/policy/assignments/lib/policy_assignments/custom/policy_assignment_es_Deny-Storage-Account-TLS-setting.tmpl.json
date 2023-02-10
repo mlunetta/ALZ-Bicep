@@ -11,7 +11,7 @@
         "value": "TLS1_2"
       }
     },
-    "policyDefinitionId": "${modManagementGroups.outputs.outTopLevelManagementGroupId}/providers/Microsoft.Authorization/policyDefinitions/stacc-tls-sett-deny",
+    "policyDefinitionId": "${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/stacc-tls-sett-deny",
     "scope": null,
     "enforcementMode": "Default"
   },

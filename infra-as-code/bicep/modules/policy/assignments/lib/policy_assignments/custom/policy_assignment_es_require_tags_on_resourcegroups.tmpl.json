@@ -17,7 +17,7 @@
         "value": "applicationname"
       }
     },
-    "policyDefinitionId": "${modManagementGroups.outputs.outTopLevelManagementGroupId}/providers/Microsoft.Authorization/policyDefinitions/Require-Tags-On-Resource-Groups",
+    "policyDefinitionId": "${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Require-Tags-On-Resource-Groups",
     "scope": null,
     "enforcementMode": "Default"
   },
