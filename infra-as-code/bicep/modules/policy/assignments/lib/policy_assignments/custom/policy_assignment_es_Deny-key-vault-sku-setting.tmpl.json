@@ -1,0 +1,22 @@
+{
+  "name": "key-vault-sku-deny",
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2019-09-01",
+  "properties": {
+    "description": "This Azure Policy denies the creation of an Azure Key Vault when the 'SKU' setting is not included in the 'allowedSKUSetting' parameter.",
+    "displayName": "Expert Days Custom - Key Vault - SKU Setting DENY",
+    "notScopes": [],
+    "parameters": {
+      "allowedSKUSetting": {
+        "value": "Premium"
+      }
+    },
+    "policyDefinitionId": "${modManagementGroups.outputs.outTopLevelManagementGroupId}/providers/Microsoft.Authorization/policyDefinitions/key-vault-sku-setting-deny",
+    "scope": null,
+    "enforcementMode": "Default"
+  },
+  "location": null,
+  "identity": {
+    "type": "None"
+  }
+}

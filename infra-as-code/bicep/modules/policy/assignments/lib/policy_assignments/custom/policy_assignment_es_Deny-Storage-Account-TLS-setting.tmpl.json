@@ -1,0 +1,22 @@
+{
+  "name": "stacc-tls-sett-deny",
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2019-09-01",
+  "properties": {
+    "description": "This Azure Policy denies the deployment of an Azure Storage Account when the 'Minimum TLS version' setting is not set to 'Version 1.2'.",
+    "displayName": "Expert Days Custom - Storage Account - TLS Setting DENY",
+    "notScopes": [],
+    "parameters": {
+      "tlsVersionRequired": {
+        "value": "TLS1_2"
+      }
+    },
+    "policyDefinitionId": "${modManagementGroups.outputs.outTopLevelManagementGroupId}/providers/Microsoft.Authorization/policyDefinitions/stacc-tls-sett-deny",
+    "scope": null,
+    "enforcementMode": "Default"
+  },
+  "location": null,
+  "identity": {
+    "type": "None"
+  }
+}

@@ -25,10 +25,35 @@ var varModuleDeploymentNames = {
 
 // Policy Assignments Modules Variables
 
-var varPolicyAssignmentRequireTagsOnResourceGroups = {
-  definitionId: '${varTopLevelManagementGroupResourceId}/providers/Microsoft.Authorization/policySetDefinitions/Require-Tags-On-Resource-Groups'
+/* var varPolicyAssignmentRequireTagsOnResourceGroups = {
   libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_require_tags_on_resourcegroups.tmpl.json')
 }
+
+var varPolicyAssignmentDenyKeyvaultSku = {
+  libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_Deny-key-vault-sku-setting.tmpl.json')
+}
+
+var varPolicyAssignmentDenyStorageAccountTls = {
+  libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_Deny-Storage-Account-TLS-setting.tmpl.json')
+} */
+
+var varCustomPolicyAssignemntsArray = [
+  {
+    scope: varManagementGroupIds.landingZones
+    name: 'Require-Tag-And-Value-From-Set'
+    libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_require_tags_on_resourcegroups.tmpl.json')
+  }
+  {
+    scope: varManagementGroupIds.landingZones
+    name: 'Deny-Keyvault-Sku-Setting'
+    libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_Deny-key-vault-sku-setting.tmpl.json')
+  }
+  {
+    scope: varManagementGroupIds.landingZonesOnline
+    name: 'Deny-StorAcc-Tls-Setting'
+    libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_Deny-Storage-Account-TLS-setting.tmpl.json')
+  }
+]
 
 // Managment Groups Varaibles - Used For Policy Assignments
 var varManagementGroupIds = {
@@ -57,13 +82,13 @@ module modCustomerUsageAttribution '../../../../CRML/customerUsageAttribution/cu
 }
 
 
-// Modules - Policy Assignments - Landing Zones Management Group
+/* // Modules - Policy Assignments - Landing Zones Management Group
 // Module - Policy Assignment - Require-Tags-On-Resource-Groups
 module modPolicyAssignmentLzsRequireTagsOnResourceGroups '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
   scope: managementGroup(varManagementGroupIds.landingZones)
   name: varModuleDeploymentNames.modPolicyAssignmentLzsRequireTagsOnResourceGroups
   params: {
-    parPolicyAssignmentDefinitionId: varPolicyAssignmentRequireTagsOnResourceGroups.definitionId
+    parPolicyAssignmentDefinitionId: varPolicyAssignmentRequireTagsOnResourceGroups.libDefinition.properties.policyDefinitionId
     parPolicyAssignmentName: varPolicyAssignmentRequireTagsOnResourceGroups.libDefinition.name
     parPolicyAssignmentDisplayName: varPolicyAssignmentRequireTagsOnResourceGroups.libDefinition.properties.displayName
     parPolicyAssignmentDescription: varPolicyAssignmentRequireTagsOnResourceGroups.libDefinition.properties.description
@@ -75,12 +100,12 @@ module modPolicyAssignmentLzsRequireTagsOnResourceGroups '../../../policy/assign
 }
 
 // Modules - Policy Assignments - Online Landing Zones Management Group
-// Module - Policy Assignment - key-vault-sku-setting-deny
-/* module modPolicyAssignmentLzsDenyKeyvaultSku '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
-  scope: managementGroup(varManagementGroupIds.landingZonesOnline)
+// Module - Policy Assignment - Key vault sku deny
+module modPolicyAssignmentLzsDenyKeyvaultSku '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
+  scope: managementGroup(varManagementGroupIds.landingZones)
   name: varModuleDeploymentNames.modPolicyAssignmentLzsDenyKeyvaultSku
   params: {
-    parPolicyAssignmentDefinitionId: varPolicyAssignmentDenyKeyvaultSku.definitionId
+    parPolicyAssignmentDefinitionId: varPolicyAssignmentDenyKeyvaultSku.libDefinition.properties.policyDefinitionId
     parPolicyAssignmentName: varPolicyAssignmentDenyKeyvaultSku.libDefinition.name
     parPolicyAssignmentDisplayName: varPolicyAssignmentDenyKeyvaultSku.libDefinition.properties.displayName
     parPolicyAssignmentDescription: varPolicyAssignmentDenyKeyvaultSku.libDefinition.properties.description
@@ -90,4 +115,35 @@ module modPolicyAssignmentLzsRequireTagsOnResourceGroups '../../../policy/assign
     parTelemetryOptOut: parTelemetryOptOut
   }
 }
- */
+
+// Modules - Policy Assignments - Online Landing Zones Management Group
+// Module - Policy Assignment - Storage account deny TLS
+module modPolicyAssignmentLzsDenyStaccTls '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = {
+  scope: managementGroup(varManagementGroupIds.landingZonesOnline)
+  name: varModuleDeploymentNames.modPolicyAssignmentLzsDenyStTls
+  params: {
+    parPolicyAssignmentDefinitionId: varPolicyAssignmentDenyStorageAccountTls.libDefinition.properties.policyDefinitionId
+    parPolicyAssignmentName: varPolicyAssignmentDenyStorageAccountTls.libDefinition.name
+    parPolicyAssignmentDisplayName: varPolicyAssignmentDenyStorageAccountTls.libDefinition.properties.displayName
+    parPolicyAssignmentDescription: varPolicyAssignmentDenyStorageAccountTls.libDefinition.properties.description
+    parPolicyAssignmentParameters: varPolicyAssignmentDenyStorageAccountTls.libDefinition.properties.parameters
+    parPolicyAssignmentIdentityType: varPolicyAssignmentDenyStorageAccountTls.libDefinition.identity.type
+    parPolicyAssignmentEnforcementMode: varPolicyAssignmentDenyStorageAccountTls.libDefinition.properties.enforcementMode
+    parTelemetryOptOut: parTelemetryOptOut
+  }
+} */
+
+module modPolicyAssignment '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = [for policyAssigment in varCustomPolicyAssignemntsArray: {
+  scope: managementGroup(policyAssigment.scope)
+  name: policyAssigment.name
+  params: {
+    parPolicyAssignmentDefinitionId: policyAssigment.libDefinition.properties.policyDefinitionId
+    parPolicyAssignmentName: policyAssigment.libDefinition.name
+    parPolicyAssignmentDisplayName: policyAssigment.libDefinition.properties.displayName
+    parPolicyAssignmentDescription: policyAssigment.libDefinition.properties.description
+    parPolicyAssignmentParameters: policyAssigment.libDefinition.properties.parameters
+    parPolicyAssignmentIdentityType: policyAssigment.libDefinition.identity.type
+    parPolicyAssignmentEnforcementMode: policyAssigment.libDefinition.properties.enforcementMode
+    parTelemetryOptOut: parTelemetryOptOut
+  }
+}]
