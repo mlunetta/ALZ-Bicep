@@ -16,7 +16,6 @@ var varCuaid = '98cef979-5a6b-403b-83c7-10c8f04ac9a2'
 var varCustomPolicyAssignemntsArray = [
   {
     scope: varManagementGroupIds.landingZones
-    name: 'Require-Tag-And-Value-From-Set'
     libDefinition: loadJsonContent('../../../policy/assignments/lib/policy_assignments/custom/policy_assignment_es_require_tags_on_resourcegroups.tmpl.json')
   }
 ]
@@ -49,7 +48,7 @@ module modCustomerUsageAttribution '../../../../CRML/customerUsageAttribution/cu
 
 module modPolicyAssignment '../../../policy/assignments/policyAssignmentManagementGroup.bicep' = [for policyAssigment in varCustomPolicyAssignemntsArray: {
   scope: managementGroup(policyAssigment.scope)
-  name: policyAssigment.name
+  name: '${policyAssigment.libDefinition.name}-${policyAssigment.scope}'
   params: {
     parPolicyAssignmentDefinitionId: '${varTopLevelManagementGroupResourceId}${policyAssigment.libDefinition.properties.policyDefinitionId}'
     parPolicyAssignmentName: policyAssigment.libDefinition.name

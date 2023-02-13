@@ -11,7 +11,6 @@ var varTargetManagementGroupResourceId = tenantResourceId('Microsoft.Management/
 // This variable contains a number of objects that load in the custom Azure Policy Defintions that are provided as part of the ESLZ/ALZ reference implementation - this is automatically created in the file 'infra-as-code\bicep\modules\policy\lib\policy_definitions\_policyDefinitionsBicepInput.txt' via a GitHub action, that runs on a daily schedule, and is then manually copied into this variable.
 var varCustomPolicyDefinitionsArray = [
   {
-    name: 'Require-Tag-And-Value-From-Set'
     libDefinition: loadJsonContent('../lib/policy_definitions/custom/policy_definition_es_Deny-ResourceGroups-without-tags-from-set.json')
   }
 ]
